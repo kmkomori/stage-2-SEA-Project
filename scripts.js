@@ -1,47 +1,11 @@
 /**
- * Data Catalog Project Starter Code - SEA Stage 2
- *
- * This file is where you should be doing most of your work. You should
- * also make changes to the HTML and CSS files, but we want you to prioritize
- * demonstrating your understanding of data structures, and you'll do that
- * with the JavaScript code you write in this file.
- *
- * The comments in this file are only to help you learn how the starter code
- * works. The instructions for the project are in the README. That said, here
- * are the three things you should do first to learn about the starter code:
- * - 1 - Change something small in index.html or style.css, then reload your
- *    browser and make sure you can see that change.
- * - 2 - On your browser, right click anywhere on the page and select
- *    "Inspect" to open the browser developer tools. Then, go to the "console"
- *    tab in the new window that opened up. This console is where you will see
- *    JavaScript errors and logs, which is extremely helpful for debugging.
- *    (These instructions assume you're using Chrome, opening developer tools
- *    may be different on other browsers. We suggest using Chrome.)
- * - 3 - Add another string to the titles array a few lines down. Reload your
- *    browser and observe what happens. You should see a fourth "card" appear
- *    with the string you added to the array, but a broken image.
- *
+ * Data Catalog Project - SEA Stage 2
+ * Kumiko Komori
  */
 
-const FRESH_PRINCE_URL =
-  "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL =
-  "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL =
-  "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
+// imported data (copy pasted from csv file)
 
-// This is an array of strings (TV show titles)
-let titles = [
-  "Fresh Prince of Bel Air",
-  "Curb Your Enthusiasm",
-  "East Los High",
-];
-// Your final submission should have much more data than this, and
-// you should use more than just an array of strings to store it all.
-
-
-
-const fish_data = `Number	Name	Sell	Where/How	Shadow	Total Catches to Unlock	Spawn Rates	Rain/Snow Catch Up	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color 1	Color 2	Size	Lighting Type	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
+const FISH_DATA = `Number	Name	Sell	Where/How	Shadow	Total Catches to Unlock	Spawn Rates	Rain/Snow Catch Up	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color 1	Color 2	Size	Lighting Type	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
 56	anchovy	200	Sea	Small	0	2–5	No	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	Blue	Red	1x1	No lighting	Fish81	FishAntyobi	FtrFishAntyobi	4201	LzuWkSQP55uEpRCP5
 36	angelfish	3000	River	Small	20	2–5	No	NA	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	NA	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	Yellow	Black	1x1	Fluorescent	Fish30	FishAngelfish	FtrFishAngelfish	2247	XTCFCk2SiuY5YXLZ7
 44	arapaima	10000	River	XX-Large	50	1	Yes	NA	NA	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	NA	NA	NA	NA	NA	NA	4 PM – 9 AM	Black	Blue	3x2	No lighting	Fish36	FishPiraruku	FtrFishPiraruku	2253	mZy4BES54bqwi97br
@@ -123,7 +87,7 @@ const fish_data = `Number	Name	Sell	Where/How	Shadow	Total Catches to Unlock	Spa
 21	yellow perch	300	River	Medium	0	7–10	No	All day	All day	All day	NA	NA	NA	NA	NA	NA	All day	All day	All day	NA	NA	NA	All day	All day	All day	All day	All day	All day	NA	NA	NA	Yellow	Black	1x1	Fluorescent	Fish18	FishYellowparch	FtrFishYellowparch	2233	bLgE5dicZniF5zZDW
 53	zebra turkeyfish	500	Sea	Medium	0	6–8	No	NA	NA	NA	All day	All day	All day	All day	All day	All day	All day	All day	NA	All day	All day	All day	All day	All day	NA	NA	NA	NA	All day	All day	All day	Red	Black	1x1	Fluorescent	Fish44	FishMinokasago	FtrFishMinokasago	2261	h7fa7Fh3Ay7vAxgE2`;
 
-const fish_image_urls = [
+const FISH_IMAGE_URLS = [
   "https://dodo.ac/np/images/4/4d/Bitterling_NH_Icon.png",
   "https://dodo.ac/np/images/e/e2/Pale_Chub_NH_Icon.png",
   "https://dodo.ac/np/images/f/f2/Crucian_Carp_NH_Icon.png",
@@ -255,8 +219,8 @@ function search() {
 
 // This function adds cards the page to display the data in the array
 function showCards() {
-  let data = csvToArray(fish_data);
-  let images = fish_image_urls;
+  let data = csvToArray(FISH_DATA);
+  let images = FISH_IMAGE_URLS;
 
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
@@ -307,8 +271,8 @@ function removeLastCard() {
 }
 
 function showNumber() {
-  let rawData = csvToArray(fish_data);
-  let images = fish_image_urls;
+  let rawData = csvToArray(FISH_DATA);
+  let images = FISH_IMAGE_URLS;
 
   let data = rawData.sort(function(a, b) {
     if (a.Number > b.Number) {
