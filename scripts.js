@@ -224,6 +224,31 @@ function csvToArray(csv) {
   return arrayOfObjects;
 }
 
+// implement search bar functionality
+function search() {
+  var userInput, filter, container, cards, i, title, txtValue;
+
+  userInput = document.getElementById('searchInput'); // from html
+  filter = userInput.value.toUpperCase(); // normalize input
+
+  container = document.getElementById("card-container");
+  cards = container.getElementsByClassName('card');
+
+  // check each card + compare to input
+  for (i = 0; i < cards.length; i++) {
+    
+    // get the title from the card header
+    title = cards[i].querySelector('.card-content h2');
+    titleText = title ? title.textContent || title.innerText : "";
+
+    // see if the card title contains the user input
+    if (titleText.toUpperCase().indexOf(filter) > -1) {
+      cards[i].style.display = "";
+    } else {
+      cards[i].style.display = "none";
+    }
+  }
+}
 
 
 // GIVEN FUNCTIONS
@@ -238,7 +263,7 @@ function showCards() {
   const templateCard = document.querySelector(".card");
 
   for (let i = 0; i < data.length; i++) {
-    let name = data[i].Name;
+    let name = data[i].Name.toUpperCase();
     image = images[data[i].Number - 1];
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
@@ -265,6 +290,9 @@ function editCardContent(card, newTitle, newImageURL) {
 
 // This calls the addCards() function when the page is first loaded
 document.addEventListener("DOMContentLoaded", showCards);
+
+
+// example button functions
 
 function quoteAlert() {
   console.log("Button Clicked!");

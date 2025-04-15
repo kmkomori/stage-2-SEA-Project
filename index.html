@@ -11,28 +11,12 @@
     <header class="main-header">
       <h1 class="title">ACNH Collectibles</h1>
     </header>
-    <div class="search-bar-container">
-      <form id="search-form" autocomplete="off">
-        <input
-          type="search"
-          id="search-input"
-          name="q"
-          placeholder="Search fish..."
-          aria-label="Search"
-        />
-        <button type="submit">Search</button>
-      </form>
-    </div>    
+    <input type="text" id="searchInput" onkeyup="search()" placeholder="Search for collectible..">
     <div id="card-container"></div>
     <div class="card" style="display: none">
       <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
-        <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
-        </ul>
+        <h2>Fish Name</h2>
+        <img src="" alt="fish icon" />
       </div>
     </div>
     <div class="footer">
