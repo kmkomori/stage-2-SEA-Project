@@ -123,6 +123,89 @@ const fish_data = `#	Name	Sell	Where/How	Shadow	Total Catches to Unlock	Spawn Ra
 21	yellow perch	300	River	Medium	0	7–10	No	All day	All day	All day	NA	NA	NA	NA	NA	NA	All day	All day	All day	NA	NA	NA	All day	All day	All day	All day	All day	All day	NA	NA	NA	Yellow	Black	1x1	Fluorescent	Fish18	FishYellowparch	FtrFishYellowparch	2233	bLgE5dicZniF5zZDW
 53	zebra turkeyfish	500	Sea	Medium	0	6–8	No	NA	NA	NA	All day	All day	All day	All day	All day	All day	All day	All day	NA	All day	All day	All day	All day	All day	NA	NA	NA	NA	All day	All day	All day	Red	Black	1x1	Fluorescent	Fish44	FishMinokasago	FtrFishMinokasago	2261	h7fa7Fh3Ay7vAxgE2`;
 
+const fish_image_urls = [
+  "https://dodo.ac/np/images/4/4d/Bitterling_NH_Icon.png",
+  "https://dodo.ac/np/images/e/e2/Pale_Chub_NH_Icon.png",
+  "https://dodo.ac/np/images/f/f2/Crucian_Carp_NH_Icon.png",
+  "https://dodo.ac/np/images/d/db/Dace_NH_Icon.png",
+  "https://dodo.ac/np/images/5/5d/Carp_NH_Icon.png",
+  "https://dodo.ac/np/images/2/2d/Koi_NH_Icon.png",
+  "https://dodo.ac/np/images/7/71/Goldfish_NH_Icon.png",
+  "https://dodo.ac/np/images/0/0d/Pop-Eyed_Goldfish_NH_Icon.png",
+  "https://dodo.ac/np/images/3/35/Ranchu_Goldfish_NH_Icon.png",
+  "https://dodo.ac/np/images/e/ea/Killifish_NH_Icon.png",
+  "https://dodo.ac/np/images/9/96/Crawfish_NH_Icon.png",
+  "https://dodo.ac/np/images/e/eb/Soft-Shelled_Turtle_NH_Icon.png",
+  "https://dodo.ac/np/images/b/b1/Snapping_Turtle_NH_Icon.png",
+  "https://dodo.ac/np/images/b/bb/Tadpole_NH_Icon.png",
+  "https://dodo.ac/np/images/2/2f/Frog_NH_Icon.png",
+  "https://dodo.ac/np/images/e/ec/Freshwater_Goby_NH_Icon.png",
+  "https://dodo.ac/np/images/a/a5/Loach_NH_Icon.png",
+  "https://dodo.ac/np/images/0/0d/Catfish_NH_Icon.png",
+  "https://dodo.ac/np/images/5/50/Giant_Snakehead_NH_Icon.png",
+  "https://dodo.ac/np/images/0/0c/Bluegill_NH_Icon.png",
+  "https://dodo.ac/np/images/6/67/Yellow_Perch_NH_Icon.png",
+  "https://dodo.ac/np/images/0/00/Black_Bass_NH_Icon.png",
+  "https://dodo.ac/np/images/e/ef/Tilapia_NH_Icon.png",
+  "https://dodo.ac/np/images/9/9f/Pike_NH_Icon.png",
+  "https://dodo.ac/np/images/0/0f/Pond_Smelt_NH_Icon.png",
+  "https://dodo.ac/np/images/6/6a/Sweetfish_NH_Icon.png",
+  "https://dodo.ac/np/images/d/db/Cherry_Salmon_NH_Icon.png",
+  "https://dodo.ac/np/images/8/80/Char_NH_Icon.png",
+  "https://dodo.ac/np/images/f/fc/Golden_Trout_NH_Icon.png",
+  "https://dodo.ac/np/images/e/eb/Stringfish_NH_Icon.png",
+  "https://dodo.ac/np/images/c/ca/Salmon_NH_Icon.png",
+  "https://dodo.ac/np/images/e/e1/King_Salmon_NH_Icon.png",
+  "https://dodo.ac/np/images/9/9d/Mitten_Crab_NH_Icon.png",
+  "https://dodo.ac/np/images/3/38/Guppy_NH_Icon.png",
+  "https://dodo.ac/np/images/0/0b/Nibble_Fish_NH_Icon.png",
+  "https://dodo.ac/np/images/c/cd/Angelfish_NH_Icon.png",
+  "https://dodo.ac/np/images/0/0b/Betta_NH_Icon.png",
+  "https://dodo.ac/np/images/4/42/Neon_Tetra_NH_Icon.png",
+  "https://dodo.ac/np/images/e/e7/Rainbowfish_NH_Icon.png",
+  "https://dodo.ac/np/images/c/c6/Piranha_NH_Icon.png",
+  "https://dodo.ac/np/images/6/67/Arowana_NH_Icon.png",
+  "https://dodo.ac/np/images/f/fe/Dorado_NH_Icon.png",
+  "https://dodo.ac/np/images/a/a2/Gar_NH_Icon.png",
+  "https://dodo.ac/np/images/b/b1/Arapaima_NH_Icon.png",
+  "https://dodo.ac/np/images/4/46/Saddled_Bichir_NH_Icon.png",
+  "https://dodo.ac/np/images/9/91/Sturgeon_NH_Icon.png",
+  "https://dodo.ac/np/images/f/f7/Sea_Butterfly_NH_Icon.png",
+  "https://dodo.ac/np/images/d/dc/Sea_Horse_NH_Icon.png",
+  "https://dodo.ac/np/images/4/4f/Clown_Fish_NH_Icon.png",
+  "https://dodo.ac/np/images/c/cb/Surgeonfish_NH_Icon.png",
+  "https://dodo.ac/np/images/4/47/Butterfly_Fish_NH_Icon.png",
+  "https://dodo.ac/np/images/3/30/Napoleonfish_NH_Icon.png",
+  "https://dodo.ac/np/images/8/85/Zebra_Turkeyfish_NH_Icon.png",
+  "https://dodo.ac/np/images/9/95/Blowfish_NH_Icon.png",
+  "https://dodo.ac/np/images/e/ee/Puffer_Fish_NH_Icon.png",
+  "https://dodo.ac/np/images/7/7f/Anchovy_%28Fish%29_NH_Icon.png",
+  "https://dodo.ac/np/images/a/a3/Horse_Mackerel_NH_Icon.png",
+  "https://dodo.ac/np/images/d/d5/Barred_Knifejaw_NH_Icon.png",
+  "https://dodo.ac/np/images/7/7f/Sea_Bass_NH_Icon.png",
+  "https://dodo.ac/np/images/c/c1/Red_Snapper_NH_Icon.png",
+  "https://dodo.ac/np/images/1/1f/Dab_NH_Icon.png",
+  "https://dodo.ac/np/images/b/b3/Olive_Flounder_NH_Icon.png",
+  "https://dodo.ac/np/images/b/bf/Squid_NH_Icon.png",
+  "https://dodo.ac/np/images/3/3e/Moray_Eel_NH_Icon.png",
+  "https://dodo.ac/np/images/2/26/Ribbon_Eel_NH_Icon.png",
+  "https://dodo.ac/np/images/4/4b/Tuna_NH_Icon.png",
+  "https://dodo.ac/np/images/2/2a/Blue_Marlin_NH_Icon.png",
+  "https://dodo.ac/np/images/1/17/Giant_Trevally_NH_Icon.png",
+  "https://dodo.ac/np/images/d/d6/Mahi-Mahi_NH_Icon.png",
+  "https://dodo.ac/np/images/e/eb/Ocean_Sunfish_NH_Icon.png",
+  "https://dodo.ac/np/images/9/9b/Ray_NH_Icon.png",
+  "https://dodo.ac/np/images/4/45/Saw_Shark_NH_Icon.png",
+  "https://dodo.ac/np/images/e/ec/Hammerhead_Shark_NH_Icon.png",
+  "https://dodo.ac/np/images/2/20/Great_White_Shark_NH_Icon.png",
+  "https://dodo.ac/np/images/4/4f/Whale_Shark_NH_Icon.png",
+  "https://dodo.ac/np/images/d/de/Suckerfish_NH_Icon.png",
+  "https://dodo.ac/np/images/3/34/Football_Fish_NH_Icon.png",
+  "https://dodo.ac/np/images/5/50/Oarfish_NH_Icon.png",
+  "https://dodo.ac/np/images/e/e0/Barreleye_NH_Icon.png",
+  "https://dodo.ac/np/images/4/45/Coelacanth_NH_Icon.png",
+];
+
 function csvToArray(csv) {
   const lines = csv.split('\n');
   const headers = lines[0].split('\t');
@@ -138,33 +221,28 @@ function csvToArray(csv) {
     return obj;
   });
 
-  console.log(arrayOfObjects);
+  return arrayOfObjects;
 }
 
 
 
+// GIVEN FUNCTIONS
+
 // This function adds cards the page to display the data in the array
 function showCards() {
+  let data = csvToArray(fish_data);
+  let images = fish_image_urls;
+
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
 
-  for (let i = 0; i < titles.length; i++) {
-    let title = titles[i];
-
-    // This part of the code doesn't scale very well! After you add your
-    // own data, you'll need to do something totally different here.
-    let imageURL = "";
-    if (i == 0) {
-      imageURL = FRESH_PRINCE_URL;
-    } else if (i == 1) {
-      imageURL = CURB_POSTER_URL;
-    } else if (i == 2) {
-      imageURL = EAST_LOS_HIGH_POSTER_URL;
-    }
+  for (let i = 0; i < data.length; i++) {
+    let name = data[i].Name;
+    image = images[i];
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL); // Edit title and image
+    editCardContent(nextCard, name, image); // Edit title and image
     cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
@@ -198,6 +276,4 @@ function quoteAlert() {
 function removeLastCard() {
   titles.pop(); // Remove last item in titles array
   showCards(); // Call showCards again to refresh
-
-  csvToArray(fish_data);
 }
