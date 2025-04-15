@@ -41,7 +41,7 @@ let titles = [
 
 
 
-const fish_data = `#	Name	Sell	Where/How	Shadow	Total Catches to Unlock	Spawn Rates	Rain/Snow Catch Up	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color 1	Color 2	Size	Lighting Type	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
+const fish_data = `Number	Name	Sell	Where/How	Shadow	Total Catches to Unlock	Spawn Rates	Rain/Snow Catch Up	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color 1	Color 2	Size	Lighting Type	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
 56	anchovy	200	Sea	Small	0	2–5	No	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	Blue	Red	1x1	No lighting	Fish81	FishAntyobi	FtrFishAntyobi	4201	LzuWkSQP55uEpRCP5
 36	angelfish	3000	River	Small	20	2–5	No	NA	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	NA	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	Yellow	Black	1x1	Fluorescent	Fish30	FishAngelfish	FtrFishAngelfish	2247	XTCFCk2SiuY5YXLZ7
 44	arapaima	10000	River	XX-Large	50	1	Yes	NA	NA	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	NA	NA	NA	NA	NA	NA	4 PM – 9 AM	Black	Blue	3x2	No lighting	Fish36	FishPiraruku	FtrFishPiraruku	2253	mZy4BES54bqwi97br
@@ -239,7 +239,7 @@ function showCards() {
 
   for (let i = 0; i < data.length; i++) {
     let name = data[i].Name;
-    image = images[i];
+    image = images[data[i].Number - 1];
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
     editCardContent(nextCard, name, image); // Edit title and image
