@@ -11,27 +11,22 @@
     <header class="main-header">
       <h1 class="title">ACNH Collectibles</h1>
     </header>
-    <input type="text" id="searchInput" onkeyup="search()" placeholder="Search for collectible..">
-    <button onclick="showNumber();">Number Sort</button>
-    <button onclick="showCards('fish');">Show Fish</button>
 
     <div class="dropdown-container">
       <div class="dropdown">
-        <label for="sortDropdown">Sort By:</label>
-        <select id="sortDropdown" onchange="sortItems()">
-          <option value="number">Number</option>
-          <option value="price">Price</option>
-          <option value="size">Size</option>
+        <label for="typeDropdown">Collectible Type:</label>
+        <select id="typeDropdown" onchange="selectType()">
+          <option value="fish">Fish</option>
+          <option value="bug">Bug</option>
         </select>
       </div>
 
       <div class="dropdown">
-        <label for="filterDropdown">Filter By Size:</label>
-        <select id="filterDropdown" onchange="filterItems()">
-          <option value="all">All</option>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
+        <label for="sortDropdown">Sort By:</label>
+        <select id="sortDropdown" onchange="sortItems()">
+          <option value="number">Number</option>
+          <option value="name">Name</option>
+          <option value="price">Price</option>
         </select>
       </div>
 
@@ -42,6 +37,26 @@
           <option value="low">Below 500 Bells</option>
           <option value="medium">500-1000 Bells</option>
           <option value="high">Above 1000 Bells</option>
+        </select>
+      </div>
+
+      <div class="dropdown">
+        <label for="colorDropdown">Filter By Color:</label>
+        <select id="colorDropdown" onchange="filterByColor()">
+          <option value="all">All</option>
+          <option value="red">Red</option>
+          <option value="orange">Orange</option>
+          <option value="yellow">Yellow</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+          <option value="light-blue">Light Blue</option>
+          <option value="purple">Purple</option>
+          <option value="pink">Pink</option>
+          <option value="white">White</option>
+          <option value="black">Black</option>
+          <option value="gray">Gray</option>
+          <option value="brown">Brown</option>
+          <option value="beige">Beige</option>
         </select>
       </div>
     </div>
@@ -57,6 +72,11 @@
         <p class="size">Size: <span id="fish-size"></span></p>
       </div>
     </div>
+
+    <input type="text" id="searchInput" onkeyup="search()" placeholder="Search for collectible..">
+    <button onclick="showNumber();">Number Sort</button>
+    <button onclick="showCards('fish');">Show Fish</button>
+
     <div class="footer">
       <button onclick="quoteAlert();">Get A Quote!</button>
       <button onclick="removeLastCard();">Remove A Card!</button>
