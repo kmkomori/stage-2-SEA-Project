@@ -3,7 +3,9 @@
  * Kumiko Komori
  */
 
-// imported data (copy pasted from csv file)
+
+
+// IMPORTED DATA (copy-pasted from csv file)
 
 const FISH_DATA = `Number	Name	Sell	Where/How	Shadow	Total Catches to Unlock	Spawn Rates	Rain/Snow Catch Up	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color 1	Color 2	Size	Lighting Type	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
 56	anchovy	200	Sea	Small	0	2–5	No	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	Blue	Red	1x1	No lighting	Fish81	FishAntyobi	FtrFishAntyobi	4201	LzuWkSQP55uEpRCP5
@@ -85,8 +87,8 @@ const FISH_DATA = `Number	Name	Sell	Where/How	Shadow	Total Catches to Unlock	Spa
 66	tuna	7000	Pier	XX-Large	50	2	Yes	All day	All day	All day	All day	NA	NA	NA	NA	NA	NA	All day	All day	NA	NA	NA	NA	All day	All day	All day	All day	All day	All day	NA	NA	Blue	Black	2x1	Fluorescent	Fish57	FishMaguro	FtrFishMaguro	2274	4PnGXx9DSb866AeCM
 75	whale shark	13000	Sea	Large w/Fin	50	1	Yes	NA	NA	NA	NA	NA	All day	All day	All day	All day	NA	NA	NA	All day	All day	All day	NA	NA	NA	NA	NA	NA	NA	NA	All day	Black	Blue	3x2	No lighting	Fish72	FishJinbeezame	FtrFishJinbee	2282	r3RAtJsXENwnFvQh7
 21	yellow perch	300	River	Medium	0	7–10	No	All day	All day	All day	NA	NA	NA	NA	NA	NA	All day	All day	All day	NA	NA	NA	All day	All day	All day	All day	All day	All day	NA	NA	NA	Yellow	Black	1x1	Fluorescent	Fish18	FishYellowparch	FtrFishYellowparch	2233	bLgE5dicZniF5zZDW
-53	zebra turkeyfish	500	Sea	Medium	0	6–8	No	NA	NA	NA	All day	All day	All day	All day	All day	All day	All day	All day	NA	All day	All day	All day	All day	All day	NA	NA	NA	NA	All day	All day	All day	Red	Black	1x1	Fluorescent	Fish44	FishMinokasago	FtrFishMinokasago	2261	h7fa7Fh3Ay7vAxgE2`;
-
+53	zebra turkeyfish	500	Sea	Medium	0	6–8	No	NA	NA	NA	All day	All day	All day	All day	All day	All day	All day	All day	NA	All day	All day	All day	All day	All day	NA	NA	NA	NA	All day	All day	All day	Red	Black	1x1	Fluorescent	Fish44	FishMinokasago	FtrFishMinokasago	2261	h7fa7Fh3Ay7vAxgE2
+`; // data about ACNH fish
 const FISH_IMAGE_URLS = [
   "https://dodo.ac/np/images/4/4d/Bitterling_NH_Icon.png",
   "https://dodo.ac/np/images/e/e2/Pale_Chub_NH_Icon.png",
@@ -168,16 +170,25 @@ const FISH_IMAGE_URLS = [
   "https://dodo.ac/np/images/5/50/Oarfish_NH_Icon.png",
   "https://dodo.ac/np/images/e/e0/Barreleye_NH_Icon.png",
   "https://dodo.ac/np/images/4/45/Coelacanth_NH_Icon.png",
-];
+]; // corresponding image addresses
 
-function csvToArray(csv) {
-  const lines = csv.split('\n');
+
+// DATA PROCESSING FUNCTIONS (i.e. parsing csv, displaying cards)
+
+/**
+ * parse imported data for features and create array of objects
+ * @param {string} csv_data imported data in the form of a tab/newline separated string
+ */
+function csvToArray(csv_data) {
+  const lines = csv_data.split('\n');
   const headers = lines[0].split('\t');
 
-  const arrayOfObjects = lines.slice(1).map(line => {
+  // convert each line to an object
+  const objArray = lines.slice(1).map(line => {
     const values = line.split('\t');
     let obj = {};
 
+    // create key-value pair from line
     headers.forEach((header, i) => {
       obj[header] = values[i];
     });
@@ -185,10 +196,65 @@ function csvToArray(csv) {
     return obj;
   });
 
-  return arrayOfObjects;
+  objArray.pop(); // removes last empty newline
+  return objArray;
 }
 
-// implement search bar functionality
+// This function adds cards the page to display the data in the array
+function showCards(type) {
+  let data;
+  let images;
+
+  if (type === 'fish')
+  {
+    data = csvToArray(FISH_DATA);
+    images = FISH_IMAGE_URLS;
+  }
+  else
+  {
+    return 0;
+  }
+
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = "";
+  const templateCard = document.querySelector(".card");
+
+  for (let i = 0; i < data.length; i++) {
+    let name = data[i].Name.toUpperCase();
+    let image = images[data[i].Number - 1];
+
+    const nextCard = templateCard.cloneNode(true); // Copy the template card
+    editCardContent(nextCard, name, image); // Edit title and image
+    cardContainer.appendChild(nextCard); // Add new card to the container
+  }
+}
+
+
+function editCardContent(card, newTitle, newImageURL) {
+  card.style.display = "block";
+
+  const cardHeader = card.querySelector("h2");
+  cardHeader.textContent = newTitle;
+
+  const cardImage = card.querySelector("img");
+  cardImage.src = newImageURL;
+  cardImage.alt = newTitle + " Poster";
+
+  // You can use console.log to help you debug!
+  // View the output by right clicking on your website,
+  // select "Inspect", then click on the "Console" tab
+  console.log("new card:", newTitle, "- html: ", card);
+}
+
+// This calls the addCards() function when the page is first loaded
+document.addEventListener("DOMContentLoaded", showCards);
+
+
+// DATA FEATURES (i.e. functionality such as search, sort)
+
+/**
+ * implement search bar functionality
+ */
 function search() {
   var userInput, filter, container, cards, i, title, txtValue;
 
@@ -214,50 +280,6 @@ function search() {
   }
 }
 
-
-// GIVEN FUNCTIONS
-
-// This function adds cards the page to display the data in the array
-function showCards() {
-  let data = csvToArray(FISH_DATA);
-  let images = FISH_IMAGE_URLS;
-
-  const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = "";
-  const templateCard = document.querySelector(".card");
-
-  for (let i = 0; i < data.length; i++) {
-    let name = data[i].Name.toUpperCase();
-    image = images[data[i].Number - 1];
-
-    const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, name, image); // Edit title and image
-    cardContainer.appendChild(nextCard); // Add new card to the container
-  }
-}
-
-function editCardContent(card, newTitle, newImageURL) {
-  card.style.display = "block";
-
-  const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newTitle;
-
-  const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
-
-  // You can use console.log to help you debug!
-  // View the output by right clicking on your website,
-  // select "Inspect", then click on the "Console" tab
-  console.log("new card:", newTitle, "- html: ", card);
-}
-
-// This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showNumber);
-
-
-// example button functions
-
 function quoteAlert() {
   console.log("Button Clicked!");
   alert(
@@ -266,8 +288,10 @@ function quoteAlert() {
 }
 
 function removeLastCard() {
-  titles.pop(); // Remove last item in titles array
+  //titles.pop(); // Remove last item in titles array
   showCards(); // Call showCards again to refresh
+
+  console.log(FISH_DATA);
 }
 
 function showNumber() {
