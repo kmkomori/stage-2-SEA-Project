@@ -222,15 +222,18 @@ function showCards(type) {
   for (let i = 0; i < data.length; i++) {
     let name = data[i].Name.toUpperCase();
     let image = images[data[i].Number - 1];
+    let number = data[i].Number;
+    let price = data[i].Sell;
+    let size = data[i].Shadow;
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, name, image); // Edit title and image
+    editCardContent(nextCard, name, image, number, price, size); // Edit title and image
     cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
 
 
-function editCardContent(card, newTitle, newImageURL) {
+function editCardContent(card, newTitle, newImageURL, newNumber, newPrice, newSize) {
   card.style.display = "block";
 
   const cardHeader = card.querySelector("h2");
@@ -239,6 +242,24 @@ function editCardContent(card, newTitle, newImageURL) {
   const cardImage = card.querySelector("img");
   cardImage.src = newImageURL;
   cardImage.alt = newTitle + " Poster";
+
+  // Update the number
+  const numberElement = card.querySelector("#fish-number");
+  if (numberElement) {
+    numberElement.textContent = newNumber;
+  }
+
+  // Update the price
+  const priceElement = card.querySelector("#fish-price");
+  if (priceElement) {
+    priceElement.textContent = newPrice;
+  }
+
+  // Update the size
+  const sizeElement = card.querySelector("#fish-size");
+  if (sizeElement) {
+    sizeElement.textContent = newSize;
+  }
 
   // You can use console.log to help you debug!
   // View the output by right clicking on your website,
