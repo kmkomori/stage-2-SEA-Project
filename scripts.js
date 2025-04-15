@@ -289,7 +289,7 @@ function editCardContent(card, newTitle, newImageURL) {
 }
 
 // This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
+document.addEventListener("DOMContentLoaded", showNumber);
 
 
 // example button functions
@@ -304,4 +304,32 @@ function quoteAlert() {
 function removeLastCard() {
   titles.pop(); // Remove last item in titles array
   showCards(); // Call showCards again to refresh
+}
+
+function showNumber() {
+  let rawData = csvToArray(fish_data);
+  let images = fish_image_urls;
+
+  let data = rawData.sort(function(a, b) {
+    if (a.Number > b.Number) {
+      return 1;
+    }
+    if (a.Number < b.Number) {
+      return -1;
+    }
+    return 0;
+  });;
+
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = "";
+  const templateCard = document.querySelector(".card");
+
+  for (let i = 0; i < data.length; i++) {
+    let name = data[i].Name.toUpperCase();
+    image = images[data[i].Number - 1];
+
+    const nextCard = templateCard.cloneNode(true); // Copy the template card
+    editCardContent(nextCard, name, image); // Edit title and image
+    cardContainer.appendChild(nextCard); // Add new card to the container
+  }
 }
