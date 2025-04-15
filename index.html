@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ACNH Collectibles | Fish</title>
+    <title>ACNH Collectibles</title>
     <meta name="description" content="A Catalog of Collectible Items in Animal Crossing New Horizons" />
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="scripts.js"></script>
@@ -14,6 +14,39 @@
     <input type="text" id="searchInput" onkeyup="search()" placeholder="Search for collectible..">
     <button onclick="showNumber();">Number Sort</button>
     <button onclick="showCards('fish');">Show Fish</button>
+
+    <div class="dropdown-container">
+      <div class="dropdown">
+        <label for="sortDropdown">Sort By:</label>
+        <select id="sortDropdown" onchange="sortItems()">
+          <option value="number">Number</option>
+          <option value="price">Price</option>
+          <option value="size">Size</option>
+        </select>
+      </div>
+
+      <div class="dropdown">
+        <label for="filterDropdown">Filter By Size:</label>
+        <select id="filterDropdown" onchange="filterItems()">
+          <option value="all">All</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+
+      <div class="dropdown">
+        <label for="priceDropdown">Filter By Price:</label>
+        <select id="priceDropdown" onchange="filterByPrice()">
+          <option value="all">All</option>
+          <option value="low">Below 500 Bells</option>
+          <option value="medium">500-1000 Bells</option>
+          <option value="high">Above 1000 Bells</option>
+        </select>
+      </div>
+    </div>
+
+        
     <div id="card-container"></div>
     <div class="card" style="display: none">
       <div class="card-content">

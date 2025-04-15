@@ -26,6 +26,30 @@ body {
   margin-bottom: 12px; /* Add some space below the input */
 }
 
+.dropdown-container {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  justify-content: center; /* Center the dropdowns horizontally */
+  gap: 20px; /* Add spacing between dropdowns */
+  margin: 20px;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center; /* Align label and select on the same line */
+}
+
+.dropdown label {
+  margin-right: 5px; /* Add spacing between label and select */
+  font-family: "Verdana";
+  font-size: 16px;
+}
+
+.dropdown select {
+  padding: 5px;
+  font-size: 16px;
+}
+
 #card-container {
   display: flex;
   justify-content: center;
