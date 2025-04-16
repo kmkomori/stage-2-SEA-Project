@@ -1,147 +1,187 @@
+/* ACNH Collectibles - Animal Crossing Themed Simple Modern CSS (Solid Colors) */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
 :root {
-  --ac-green: #5e8c4a;   /* darker green */
-  --ac-blue: #6bb0b8;    /* darker blue */
-  --ac-beige: #e2cdb2;   /* darker beige */
-  --ac-brown: #8a6b3c;   /* darker brown */
-  --ac-yellow: #e6b800;  /* darker yellow */
-  --ac-white: #f5f5f5;   /* off-white */
-  --ac-shadow: rgba(60, 60, 60, 0.13);
+  --acnh-green: #7bb661;
+  --acnh-leaf: #4e944f;
+  --acnh-beige: #f5e9da;
+  --acnh-brown: #b48a78;
+  --acnh-blue: #a3d8f4;
+  --acnh-yellow: #ffe066;
+  --acnh-shadow: rgba(60, 60, 60, 0.08);
+  --acnh-radius: 18px;
+  --acnh-transition: 0.2s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  background: var(--ac-beige);
-  font-family: 'Verdana', 'Helvetica', sans-serif;
+body {
+  font-family: 'Nunito', Arial, sans-serif;
+  background: var(--acnh-beige);
   color: #333;
+  margin: 0;
+  min-height: 100vh;
 }
 
 .main-header {
-  background: var(--ac-green);
-  padding: 24px 0 12px 0;
-  border-bottom: 2px solid var(--ac-brown);
+  background: var(--acnh-green);
+  color: #fff;
+  padding: 2rem 0 1rem 0;
+  text-align: center;
+  border-bottom-left-radius: var(--acnh-radius);
+  border-bottom-right-radius: var(--acnh-radius);
+  box-shadow: 0 2px 8px var(--acnh-shadow);
 }
 
 .title {
-  text-align: center;
-  margin: 0;
-  font-size: 3em;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  color: var(--ac-white);
+  font-size: 2.5rem;
   letter-spacing: 2px;
-}
-
-#searchInput {
-  width: 60%;
-  font-size: 1.1em;
-  padding: 10px 16px;
-  border: 2px solid var(--ac-blue);
-  border-radius: 12px;
-  margin: 18px auto 16px auto;
-  display: block;
-  background: var(--ac-white);
-  box-sizing: border-box;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 1px 2px 0 var(--acnh-leaf);
 }
 
 .dropdown-box {
-    background: var(--ac-white);
-    border: 2px solid var(--ac-green);
-    border-radius: 18px;
-    box-shadow: 0 2px 8px var(--ac-shadow);
-    padding: 24px 32px;
-    margin: 32px auto 0 auto;
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1000px;
-  }  
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 1rem 0;
+}
 
 .dropdown-container {
   display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background: #fffbe6;
+  padding: 1.5rem 2rem;
+  border-radius: var(--acnh-radius);
+  box-shadow: 0 2px 8px var(--acnh-shadow);
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
 }
 
 .dropdown label {
-  margin-right: 6px;
-  font-size: 1em;
-  color: var(--ac-brown);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--acnh-leaf);
 }
 
-.dropdown select {
-  padding: 6px 10px;
-  font-size: 1em;
-  border-radius: 8px;
-  border: 1.5px solid var(--ac-green);
-  background: var(--ac-white);
+select, input[type="text"] {
+  padding: 0.5rem 0.8rem;
+  border: 2px solid var(--acnh-green);
+  border-radius: var(--acnh-radius);
+  background: #fff;
+  font-size: 1rem;
+  transition: border-color var(--acnh-transition);
+  outline: none;
+}
+
+select:focus, input[type="text"]:focus {
+  border-color: var(--acnh-leaf);
 }
 
 #card-container {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 18px;
-  margin: 24px 0;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1rem 4rem 1rem;
 }
 
 .card {
-  width: 210px;
-  background: var(--ac-white);
-  border: 2px solid var(--ac-green);
-  border-radius: 16px;
-  box-shadow: 0 2px 8px var(--ac-shadow);
-  overflow: hidden;
-  transition: transform 0.1s;
+  background: #fff;
+  border-radius: var(--acnh-radius);
+  box-shadow: 0 4px 16px var(--acnh-shadow);
+  width: 260px;
+  transition: transform var(--acnh-transition), box-shadow var(--acnh-transition);
+  cursor: pointer;
+  border: 2px solid var(--acnh-green);
+  position: relative;
 }
 
 .card:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 6px 16px var(--ac-shadow);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 24px var(--acnh-shadow);
+  border-color: var(--acnh-leaf);
 }
 
 .card-content {
-  padding: 16px;
-  color: var(--ac-brown);
+  padding: 1.2rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card-content h2 {
-  margin: 0 0 8px 0;
-  font-size: 1.2em;
-  color: var(--ac-green);
+  font-size: 1.3rem;
+  color: var(--acnh-leaf);
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  text-align: center;
 }
 
-.card img {
-  width: 100%;
-  border-bottom: 1px solid var(--ac-blue);
+.card-content img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 0.7rem;
+  border-radius: 50%;
+  background: var(--acnh-blue);
+  border: 2px solid var(--acnh-green);
+  box-shadow: 0 2px 8px var(--acnh-shadow);
+}
+
+.card-content p {
+  margin: 0.2rem 0;
+  font-size: 1rem;
+}
+
+.card-checkbox {
+  accent-color: var(--acnh-green);
+  margin-right: 0.5rem;
+}
+
+.card label {
+  margin-top: 0.7rem;
+  font-size: 1rem;
+  color: var(--acnh-brown);
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .footer {
-  display: flex;
-  justify-content: center;
-  background: var(--ac-blue);
-  color: var(--ac-brown);
-  padding: 12px 0;
-  font-size: 1em;
-  border-top: 2px solid var(--ac-green);
+  height: 60px;
+  background: var(--acnh-leaf);
+  border-top-left-radius: var(--acnh-radius);
+  border-top-right-radius: var(--acnh-radius);
+  margin-top: 2rem;
 }
 
-button {
-  background: var(--ac-yellow);
-  border: none;
-  border-radius: 10px;
-  color: var(--ac-brown);
-  font-size: 1.1em;
-  padding: 8px 20px;
-  margin: 0 6px;
-  cursor: pointer;
-  box-shadow: 0 2px 4px var(--ac-shadow);
-  transition: background 0.2s;
+/* Responsive Design */
+@media (max-width: 900px) {
+  .dropdown-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  #card-container {
+    gap: 1rem;
+    padding: 1rem 0.5rem 3rem 0.5rem;
+  }
 }
 
-button:hover {
-  background: var(--ac-green);
-  color: var(--ac-white);
+@media (max-width: 600px) {
+  .main-header {
+    padding: 1.2rem 0 0.7rem 0;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .card {
+    width: 95vw;
+    min-width: 0;
+  }
 }

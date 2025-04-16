@@ -465,6 +465,7 @@ function getDropdownValue(id) {
  */
 function processCards() {
   selectType();
+  search();
   sortItems();
   filterItems();
   showCards();
@@ -485,6 +486,17 @@ function selectType() {
     images = BUG_IMAGE_URLS;
     foundStatus = bugFound;
   }
+}
+
+/**
+ * updates catalog as the search bar recieves input
+ */
+function search() {
+  const searchValue = getDropdownValue("searchInput").toLowerCase();
+
+  data = data.filter(item => {
+    return item.Name.toLowerCase().includes(searchValue);
+  });
 }
 
 /**
