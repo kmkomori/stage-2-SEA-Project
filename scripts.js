@@ -290,11 +290,11 @@ function csvToArray(csv_data) {
 let data = csvToArray(FISH_DATA);
 let images = FISH_IMAGE_URLS;
 
-
-// DISPLAY FUNCTIONS (i.e. show cards, edit cards)
-
 // call the showCards() function when the page is first loaded
 document.addEventListener("DOMContentLoaded", showCards);
+
+
+// DISPLAY FUNCTIONS (i.e. show cards, edit cards)
 
 /**
  * adds and displays card data from object array
@@ -348,6 +348,34 @@ function editCardContent(card, name, num, imageURL, price) {
 
 
 // DATA FEATURES (i.e. functionality such as search, sort, filter)
+
+/**
+ * helper function to get value from dropdown menu
+ * @param {string} id specific value we are looking for
+ */
+function getDropdownValue(id) {
+  return document.getElementById(id).value;
+}
+
+/**
+ * upon selecting a type, display cards of that type
+ */
+function selectType() {
+  const type = getDropdownValue("typeDropdown");
+
+  if (type === "fish") {
+    data = csvToArray(FISH_DATA);
+    images = FISH_IMAGE_URLS;
+  } else if (type === "bug") {
+    data = csvToArray(BUG_DATA);
+    images = FISH_IMAGE_URLS; // NEED TO FIX LATER
+  }
+
+  showCards();
+}
+
+
+// TESTER FUNCTIONALITIES 
 
 /**
  * implement search bar functionality
