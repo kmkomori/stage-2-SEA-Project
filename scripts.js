@@ -6,7 +6,7 @@
 
 // IMPORTED DATA (copy-pasted from csv file)
 
-const FISH_DATA = `Number	Name	Sell	Where/How	Shadow	Total Catches to Unlock	Spawn Rates	Rain/Snow Catch Up	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color 1	Color 2	Size	Lighting Type	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
+const FISH_DATA = `Num	Name	Sell	Where/How	Shadow	Total Catches to Unlock	Spawn Rates	Rain/Snow Catch Up	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color1	Color2	Size	Lighting Type	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
 56	anchovy	200	Sea	Small	0	2–5	No	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	Blue	Red	1x1	No lighting	Fish81	FishAntyobi	FtrFishAntyobi	4201	LzuWkSQP55uEpRCP5
 36	angelfish	3000	River	Small	20	2–5	No	NA	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	NA	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	Yellow	Black	1x1	Fluorescent	Fish30	FishAngelfish	FtrFishAngelfish	2247	XTCFCk2SiuY5YXLZ7
 44	arapaima	10000	River	XX-Large	50	1	Yes	NA	NA	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	NA	NA	NA	NA	NA	NA	4 PM – 9 AM	Black	Blue	3x2	No lighting	Fish36	FishPiraruku	FtrFishPiraruku	2253	mZy4BES54bqwi97br
@@ -89,6 +89,7 @@ const FISH_DATA = `Number	Name	Sell	Where/How	Shadow	Total Catches to Unlock	Spa
 53	zebra turkeyfish	500	Sea	Medium	0	6–8	No	NA	NA	NA	All day	All day	All day	All day	All day	All day	All day	All day	NA	All day	All day	All day	All day	All day	NA	NA	NA	NA	All day	All day	All day	Red	Black	1x1	Fluorescent	Fish44	FishMinokasago	FtrFishMinokasago	2261	h7fa7Fh3Ay7vAxgE2
 `; // data about ACNH fish
 const FISH_IMAGE_URLS = [
+  "",
   "https://dodo.ac/np/images/4/4d/Bitterling_NH_Icon.png",
   "https://dodo.ac/np/images/e/e2/Pale_Chub_NH_Icon.png",
   "https://dodo.ac/np/images/f/f2/Crucian_Carp_NH_Icon.png",
@@ -171,7 +172,7 @@ const FISH_IMAGE_URLS = [
   "https://dodo.ac/np/images/4/45/Coelacanth_NH_Icon.png",
 ]; // corresponding image addresses
 
-const BUG_DATA = `#	Name	Sell	Where/How	Weather	Total Catches to Unlock	Spawn Rates	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color 1	Color 2	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
+const BUG_DATA = `Num	Name	Sell	Where/How	Weather	Total Catches to Unlock	Spawn Rates	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color1	Color2	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
 10	agrias butterfly	3000	Flying near flowers	Any except rain	20	5	NA	NA	NA	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	NA	NA	NA	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	NA	NA	NA	NA	NA	NA	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	Pink	Green	Ins6	InsectMiirotateha	FtrInsectMiirotateha	620	aj95rMzdbSbvZy9A2
 69	ant	80	On rotten turnips	Any weather	0	0	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	Black	White	Ins26	InsectAri	FtrInsectAri	588	QZpmczZu4hW2a4Rpv
 14	Atlas moth	3000	On trees (any kind)	Any weather	20	5	NA	NA	NA	7 PM – 4 AM	7 PM – 4 AM	7 PM – 4 AM	7 PM – 4 AM	7 PM – 4 AM	7 PM – 4 AM	NA	NA	NA	7 PM – 4 AM	7 PM – 4 AM	7 PM – 4 AM	NA	NA	NA	NA	NA	NA	7 PM – 4 AM	7 PM – 4 AM	7 PM – 4 AM	Orange	Yellow	Ins10	InsectYonagunisan	FtrInsectYonagunisan	652	u2GhYQJXDCQKp7AQ8
@@ -254,6 +255,7 @@ const BUG_DATA = `#	Name	Sell	Where/How	Weather	Total Catches to Unlock	Spawn Ra
 2	yellow butterfly	160	Flying	Any except rain	0	60	NA	NA	4 AM – 7 PM	4 AM – 7 PM	4 AM – 7 PM	4 AM – 7 PM	NA	NA	4 AM – 7 PM	4 AM – 7 PM	NA	NA	NA	NA	4 AM – 7 PM	4 AM – 7 PM	NA	NA	NA	NA	4 AM – 7 PM	4 AM – 7 PM	4 AM – 7 PM	4 AM – 7 PM	Yellow	Blue	Ins1	InsectMonkicho	FtrInsectMonkicho	625	9d92MqgcnGao8wQjB
 `; // data about ACNH bugs
 
+
 // DATA FUNCTIONS (i.e. parsing csv)
 
 /**
@@ -278,79 +280,71 @@ function csvToArray(csv_data) {
   });
 
   objArray.pop(); // removes last empty newline
+  console.log(objArray); // for debugging
+
   return objArray;
 }
 
+
+// DEFAULT SETTINGS
+let data = csvToArray(FISH_DATA);
+let images = FISH_IMAGE_URLS;
+
+
 // DISPLAY FUNCTIONS (i.e. show cards, edit cards)
 
-// This function adds cards the page to display the data in the array
-function showCards(type) {
-  let data;
-  let images;
+// call the showCards() function when the page is first loaded
+document.addEventListener("DOMContentLoaded", showCards);
 
-  if (type === 'fish')
-  {
-    data = csvToArray(FISH_DATA);
-    images = FISH_IMAGE_URLS;
-  }
-  else
-  {
-    return 0;
-  }
-
+/**
+ * adds and displays card data from object array
+ */
+function showCards() {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
 
   for (let i = 0; i < data.length; i++) {
     let name = data[i].Name.toUpperCase();
-    let image = images[data[i].Number - 1];
-    let number = data[i].Number;
+    let num = data[i].Num;
+    let imageURL = images[num];
     let price = data[i].Sell;
-    let size = data[i].Shadow;
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, name, image, number, price, size); // Edit title and image
+    editCardContent(nextCard, name, num, imageURL, price); // Edit title and image
     cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
 
-function editCardContent(card, newTitle, newImageURL, newNumber, newPrice, newSize) {
+/**
+ * edit the template card to match each object
+ * @param {Node} card the card to be edited in the function
+ * @param {string} name the name of the object
+ * @param {number} num the number of the object
+ * @param {string} imageURL image address of the object icon
+ * @param {number} price the price of the object
+ */
+function editCardContent(card, name, num, imageURL, price) {
   card.style.display = "block";
 
   const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newTitle;
+  cardHeader.textContent = name;
 
   const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
+  cardImage.src = imageURL;
+  cardImage.alt = name + " Poster";
 
-  // Update the number
-  const numberElement = card.querySelector("#fish-number");
-  if (numberElement) {
-    numberElement.textContent = newNumber;
-  }
+  const numberElement = card.querySelector("#number");
+  numberElement.textContent = num;
 
-  // Update the price
-  const priceElement = card.querySelector("#fish-price");
-  if (priceElement) {
-    priceElement.textContent = newPrice;
-  }
-
-  // Update the size
-  const sizeElement = card.querySelector("#fish-size");
-  if (sizeElement) {
-    sizeElement.textContent = newSize;
-  }
+  const priceElement = card.querySelector("#price");
+  priceElement.textContent = price;
 
   // You can use console.log to help you debug!
   // View the output by right clicking on your website,
   // select "Inspect", then click on the "Console" tab
-  console.log("new card:", newTitle, "- html: ", card);
+  console.log("new card:", name, "- html: ", card);
 }
-
-// This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
 
 
 // DATA FEATURES (i.e. functionality such as search, sort, filter)
@@ -358,6 +352,7 @@ document.addEventListener("DOMContentLoaded", showCards);
 /**
  * implement search bar functionality
  */
+/*
 function search() {
   var userInput, filter, container, cards, i, title, txtValue;
 
@@ -402,10 +397,10 @@ function showNumber() {
   let images = FISH_IMAGE_URLS;
 
   let data = rawData.sort(function(a, b) {
-    if (a.Number > b.Number) {
+    if (a.Num > b.Num) {
       return 1;
     }
-    if (a.Number < b.Number) {
+    if (a.Num < b.Num) {
       return -1;
     }
     return 0;
@@ -417,10 +412,12 @@ function showNumber() {
 
   for (let i = 0; i < data.length; i++) {
     let name = data[i].Name.toUpperCase();
-    image = images[data[i].Number - 1];
+    image = images[data[i].Num - 1];
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
     editCardContent(nextCard, name, image); // Edit title and image
     cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
+
+*/
