@@ -6,7 +6,7 @@
 
 // IMPORTED DATA (copy-pasted from csv file)
 
-const FISH_DATA = `Num	Name	Sell	Where/How	Shadow	Total Catches to Unlock	Spawn Rates	Rain/Snow Catch Up	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color1	Color2	Size	Lighting Type	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
+const FISH_DATA = `Num	Name	Price	Where/How	Shadow	Total Catches to Unlock	Spawn Rates	Rain/Snow Catch Up	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color1	Color2	Size	Lighting Type	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
 56	anchovy	200	Sea	Small	0	2–5	No	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	4 AM – 9 PM	Blue	Red	1x1	No lighting	Fish81	FishAntyobi	FtrFishAntyobi	4201	LzuWkSQP55uEpRCP5
 36	angelfish	3000	River	Small	20	2–5	No	NA	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	NA	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	Yellow	Black	1x1	Fluorescent	Fish30	FishAngelfish	FtrFishAngelfish	2247	XTCFCk2SiuY5YXLZ7
 44	arapaima	10000	River	XX-Large	50	1	Yes	NA	NA	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	NA	4 PM – 9 AM	4 PM – 9 AM	4 PM – 9 AM	NA	NA	NA	NA	NA	NA	NA	NA	4 PM – 9 AM	Black	Blue	3x2	No lighting	Fish36	FishPiraruku	FtrFishPiraruku	2253	mZy4BES54bqwi97br
@@ -172,7 +172,7 @@ const FISH_IMAGE_URLS = [
   "https://dodo.ac/np/images/4/45/Coelacanth_NH_Icon.png",
 ]; // corresponding image addresses
 
-const BUG_DATA = `Num	Name	Sell	Where/How	Weather	Total Catches to Unlock	Spawn Rates	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color1	Color2	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
+const BUG_DATA = `Num	Name	Price	Where/How	Weather	Total Catches to Unlock	Spawn Rates	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color1	Color2	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
 10	agrias butterfly	3000	Flying near flowers	Any except rain	20	5	NA	NA	NA	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	NA	NA	NA	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	NA	NA	NA	NA	NA	NA	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	Pink	Green	Ins6	InsectMiirotateha	FtrInsectMiirotateha	620	aj95rMzdbSbvZy9A2
 69	ant	80	On rotten turnips	Any weather	0	0	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	Black	White	Ins26	InsectAri	FtrInsectAri	588	QZpmczZu4hW2a4Rpv
 14	Atlas moth	3000	On trees (any kind)	Any weather	20	5	NA	NA	NA	7 PM – 4 AM	7 PM – 4 AM	7 PM – 4 AM	7 PM – 4 AM	7 PM – 4 AM	7 PM – 4 AM	NA	NA	NA	7 PM – 4 AM	7 PM – 4 AM	7 PM – 4 AM	NA	NA	NA	NA	NA	NA	7 PM – 4 AM	7 PM – 4 AM	7 PM – 4 AM	Orange	Yellow	Ins10	InsectYonagunisan	FtrInsectYonagunisan	652	u2GhYQJXDCQKp7AQ8
@@ -287,6 +287,7 @@ function csvToArray(csv_data) {
 
 
 // DEFAULT SETTINGS
+
 let data = csvToArray(FISH_DATA);
 let images = FISH_IMAGE_URLS;
 
@@ -308,7 +309,7 @@ function showCards() {
     let name = data[i].Name.toUpperCase();
     let num = data[i].Num;
     let imageURL = images[num];
-    let price = data[i].Sell;
+    let price = data[i].Price;
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
     editCardContent(nextCard, name, num, imageURL, price); // Edit title and image
@@ -371,7 +372,32 @@ function selectType() {
     images = FISH_IMAGE_URLS; // NEED TO FIX LATER
   }
 
+  processCards();
+}
+
+/**
+ * apply sorting and filtering before displaying
+ */
+function processCards() {
+  sortItems();
   showCards();
+}
+
+/**
+ * upon selecting sort value, sort array and refresh display
+ */
+function sortItems() {
+  const sortBy = getDropdownValue("sortDropdown");
+
+  if (sortBy === "name") {
+    data.sort((a, b) => a.Name.localeCompare(b.Name));
+  } else if (sortBy === "number") {
+    data.sort((a, b) => a.Num - b.Num);
+  } else if (sortBy === "price-descending") {
+    data.sort((a, b) => a.Price - b.Price);
+  } else if (sortBy === "price-ascending") {
+    data.sort((a, b) => b.Price - a.Price);
+  }
 }
 
 

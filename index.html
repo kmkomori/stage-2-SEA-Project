@@ -23,16 +23,17 @@
 
       <div class="dropdown">
         <label for="sortDropdown">Sort By:</label>
-        <select id="sortDropdown" onchange="sortItems()">
-          <option value="number">Number</option>
+        <select id="sortDropdown" onchange="processCards()">
           <option value="name">Name</option>
-          <option value="price">Price</option>
+          <option value="number">Number</option>
+          <option value="price-descending">Sell Price (Low-to-High)</option>
+          <option value="price-ascending">Sell Price (High-to-Low)</option>
         </select>
       </div>
 
       <div class="dropdown">
         <label for="priceDropdown">Filter By Price:</label>
-        <select id="priceDropdown" onchange="filterByPrice()">
+        <select id="priceDropdown" onchange="processCards()">
           <option value="all">All</option>
           <option value="low">Below 500 Bells</option>
           <option value="medium">500-1000 Bells</option>
@@ -42,7 +43,7 @@
 
       <div class="dropdown">
         <label for="colorDropdown">Filter By Color:</label>
-        <select id="colorDropdown" onchange="filterByColor()">
+        <select id="colorDropdown" onchange="processCards()">
           <option value="all">All</option>
           <option value="red">Red</option>
           <option value="orange">Orange</option>
@@ -60,7 +61,6 @@
         </select>
       </div>
     </div>
-
         
     <div id="card-container"></div>
     <div class="card" style="display: none">
