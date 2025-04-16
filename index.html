@@ -24,8 +24,8 @@
       <div class="dropdown">
         <label for="sortDropdown">Sort By:</label>
         <select id="sortDropdown" onchange="processCards()">
-          <option value="name">Name</option>
           <option value="number">Number</option>
+          <option value="name">Name</option>
           <option value="price-descending">Sell Price (Low-to-High)</option>
           <option value="price-ascending">Sell Price (High-to-Low)</option>
         </select>
@@ -60,6 +60,15 @@
           <option value="Beige">Beige</option>
         </select>
       </div>
+
+      <div class="dropdown">
+        <label for="foundDropdown">Found Status:</label>
+        <select id="foundDropdown" onchange="processCards()">
+          <option value="all">All</option>
+          <option value="found">Found</option>
+          <option value="not-found">Not Found</option>
+        </select>
+      </div>
     </div>
         
     <div id="card-container"></div>
@@ -69,6 +78,10 @@
         <img src="" alt="fish icon" />
         <p class="number">Number: <span id="number"></span></p>
         <p class="price">Sell Price: <span id="price"></span> Bells</p>
+        <label>
+          <input type="checkbox" class="card-checkbox" onchange="cardChecked(this); processCards();">
+          Found?
+        </label>        
       </div>
     </div>
 

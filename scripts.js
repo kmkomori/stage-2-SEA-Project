@@ -338,6 +338,26 @@ const BUG_IMAGE_URLS = [
   "https://dodo.ac/np/images/9/95/Scorpion_NH_Icon.png",
 ]; // image addresses (in number order)
 
+// process data ahead of time
+const processedFish = csvToArray(FISH_DATA);
+const processedBug = csvToArray(BUG_DATA);
+
+// arrays to store found status of each type of data
+// this way, found status doesn't get reset when filtering
+let fishFound = Array(processedFish.length+1).fill(false);
+let bugFound = Array(processedBug.length+1).fill(false);
+
+
+// DEFAULT SETTINGS
+
+let data = processedFish;
+let images = FISH_IMAGE_URLS;
+let foundStatus = fishFound;
+
+// display cards when the page is first loaded
+document.addEventListener("DOMContentLoaded", processCards);
+
+
 // DATA FUNCTIONS (i.e. parsing csv)
 
 /**
@@ -368,15 +388,6 @@ function csvToArray(csv_data) {
 }
 
 
-// DEFAULT SETTINGS
-
-let data = csvToArray(FISH_DATA);
-let images = FISH_IMAGE_URLS;
-
-// call the showCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
-
-
 // DISPLAY FUNCTIONS (i.e. show cards, edit cards)
 
 /**
@@ -390,11 +401,16 @@ function showCards() {
   for (let i = 0; i < data.length; i++) {
     let name = data[i].Name.toUpperCase();
     let num = data[i].Num;
-    let imageURL = images[num];
+    let image = images[num];
     let price = data[i].Price;
+    let found = foundStatus[num];
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, name, num, imageURL, price); // Edit title and image
+    editCardContent(nextCard, name, num, image, price, found); // Edit title and image
+
+    // easiest way to access card num property
+    nextCard.setAttribute('card-num', num);
+
     cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
@@ -404,17 +420,18 @@ function showCards() {
  * @param {Node} card the card to be edited in the function
  * @param {string} name the name of the object
  * @param {number} num the number of the object
- * @param {string} imageURL image address of the object icon
+ * @param {string} image image address of the object icon
  * @param {number} price the price of the object
+ * @param {boolean} found true if the card is checked, false otherwise
  */
-function editCardContent(card, name, num, imageURL, price) {
+function editCardContent(card, name, num, image, price, found) {
   card.style.display = "block";
 
   const cardHeader = card.querySelector("h2");
   cardHeader.textContent = name;
 
   const cardImage = card.querySelector("img");
-  cardImage.src = imageURL;
+  cardImage.src = image;
   cardImage.alt = name + " Poster";
 
   const numberElement = card.querySelector("#number");
@@ -422,6 +439,9 @@ function editCardContent(card, name, num, imageURL, price) {
 
   const priceElement = card.querySelector("#price");
   priceElement.textContent = price;
+
+  const checkbox = card.querySelector('.card-checkbox');
+  checkbox.checked = found;
 
   // You can use console.log to help you debug!
   // View the output by right clicking on your website,
@@ -457,11 +477,13 @@ function selectType() {
   const type = getDropdownValue("typeDropdown");
 
   if (type === "fish") {
-    data = csvToArray(FISH_DATA);
+    data = processedFish;
     images = FISH_IMAGE_URLS;
+    foundStatus = fishFound;
   } else if (type === "bug") {
-    data = csvToArray(BUG_DATA);
+    data = processedBug;
     images = BUG_IMAGE_URLS;
+    foundStatus = bugFound;
   }
 }
 
@@ -505,6 +527,20 @@ function filterItems() {
     data = data.filter(item => item.Color1 === colorFilter);
   }
 
+  // filter by found status
+  const foundFilter = getDropdownValue("foundDropdown");
+
+  if (foundFilter !== "all")
+  {
+    data = data.filter(item => (foundStatus[item.Num] ? "found" : "not-found") === foundFilter)
+  }
+
+}
+
+function cardChecked(checkbox) {
+  const card = checkbox.closest('.card');
+  const num = card.getAttribute('card-num');
+  foundStatus[num] = checkbox.checked;
 }
 
 
