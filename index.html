@@ -12,92 +12,94 @@
       <h1 class="title">ACNH Collectibles</h1>
     </header>
 
-    <div class="dropdown-box">
-      <div class="dropdown-container">
-        <div class="dropdown">
-          <label for="typeDropdown">Collectible Type:</label>
-          <select id="typeDropdown" onchange="processCards()">
-            <option value="fish">Fish</option>
-            <option value="bug">Bug</option>
-          </select>
-        </div>
+    <main id="main-content">
+      <div class="dropdown-box">
+        <div class="dropdown-container">
+          <div class="dropdown">
+            <label for="typeDropdown">Collectible Type:</label>
+            <select id="typeDropdown" onchange="processCards()">
+              <option value="fish">Fish</option>
+              <option value="bug">Bug</option>
+            </select>
+          </div>
 
-        <div class="dropdown">
-          <label for="sortDropdown">Sort By:</label>
-          <select id="sortDropdown" onchange="processCards()">
-            <option value="number">Number</option>
-            <option value="name">Name</option>
-            <option value="price-descending">Sell Price (Low-to-High)</option>
-            <option value="price-ascending">Sell Price (High-to-Low)</option>
-          </select>
-        </div>
+          <div class="dropdown">
+            <label for="sortDropdown">Sort By:</label>
+            <select id="sortDropdown" onchange="processCards()">
+              <option value="number">Number</option>
+              <option value="name">Name</option>
+              <option value="price-descending">Sell Price (Low-to-High)</option>
+              <option value="price-ascending">Sell Price (High-to-Low)</option>
+            </select>
+          </div>
 
-        <!--
-        <div class="dropdown">
-          <label for="priceDropdown">Filter By Price:</label>
-          <select id="priceDropdown" onchange="processCards()">
-            <option value="all">All</option>
-            <option value="low">Below 500 Bells</option>
-            <option value="mid">500-1000 Bells</option>
-            <option value="high">Above 1000 Bells</option>
-          </select>
-        </div>
-        -->
+          <!--
+          <div class="dropdown">
+            <label for="priceDropdown">Filter By Price:</label>
+            <select id="priceDropdown" onchange="processCards()">
+              <option value="all">All</option>
+              <option value="low">Below 500 Bells</option>
+              <option value="mid">500-1000 Bells</option>
+              <option value="high">Above 1000 Bells</option>
+            </select>
+          </div>
+          -->
 
-        <div class="dropdown">
-          <label for="colorDropdown">Filter By Color:</label>
-          <select id="colorDropdown" onchange="processCards()">
-            <option value="all">All</option>
-            <option value="Red">Red</option>
-            <option value="Orange">Orange</option>
-            <option value="Yellow">Yellow</option>
-            <option value="Green">Green</option>
-            <option value="Blue">Blue</option>
-            <option value="Light blue">Light Blue</option>
-            <option value="Purple">Purple</option>
-            <option value="Pink">Pink</option>
-            <option value="White">White</option>
-            <option value="Black">Black</option>
-            <option value="Gray">Gray</option>
-            <option value="Brown">Brown</option>
-            <option value="Beige">Beige</option>
-          </select>
-        </div>
+          <div class="dropdown">
+            <label for="colorDropdown">Filter By Color:</label>
+            <select id="colorDropdown" onchange="processCards()">
+              <option value="all">All</option>
+              <option value="Red">Red</option>
+              <option value="Orange">Orange</option>
+              <option value="Yellow">Yellow</option>
+              <option value="Green">Green</option>
+              <option value="Blue">Blue</option>
+              <option value="Light blue">Light Blue</option>
+              <option value="Purple">Purple</option>
+              <option value="Pink">Pink</option>
+              <option value="White">White</option>
+              <option value="Black">Black</option>
+              <option value="Gray">Gray</option>
+              <option value="Brown">Brown</option>
+              <option value="Beige">Beige</option>
+            </select>
+          </div>
 
-        <div class="dropdown">
-          <label for="foundDropdown">Found Status:</label>
-          <select id="foundDropdown" onchange="processCards()">
-            <option value="all">All</option>
-            <option value="found">Found</option>
-            <option value="not-found">Not Found</option>
-          </select>
-        </div>
+          <div class="dropdown">
+            <label for="foundDropdown">Found Status:</label>
+            <select id="foundDropdown" onchange="processCards()">
+              <option value="all">All</option>
+              <option value="found">Found</option>
+              <option value="not-found">Not Found</option>
+            </select>
+          </div>
 
-        <div class="dropdown search-dropdown">
-          <label for="searchInput">Search:</label>
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Search collectibles..."
-            oninput="processCards()"
-          />
-        </div>        
+          <div class="dropdown search-dropdown">
+            <label for="searchInput">Search:</label>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search collectibles..."
+              oninput="processCards()"
+            />
+          </div>        
+        </div>
       </div>
-    </div>
-        
-    <div id="card-container"></div>
-    <div class="card" style="display: none" onclick="cardChecked(this); processCards();">
-      <div class="card-content">
-        <h2>Fish Name</h2>
-        <img src="" alt="fish icon" />
-        <p class="number">Number: <span id="number"></span></p>
-        <p class="price">Sell Price: <span id="price"></span> Bells</p>
-        <label>
-          <input type="checkbox" class="card-checkbox" onchange="boxChecked(this); processCards();">
-          Found?
-        </label>        
+          
+      <div id="card-container"></div>
+      <div class="card" style="display: none" onclick="cardChecked(this); processCards();">
+        <div class="card-content">
+          <h2>Fish Name</h2>
+          <img src="" alt="fish icon" />
+          <p class="number">Number: <span id="number"></span></p>
+          <p class="price">Sell Price: <span id="price"></span> Bells</p>
+          <label>
+            <input type="checkbox" class="card-checkbox" onchange="boxChecked(this); processCards();">
+            Found?
+          </label>        
+        </div>
       </div>
-    </div>
+    </main>
 
     <div class="footer">
     </div>

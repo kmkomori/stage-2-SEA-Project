@@ -398,6 +398,16 @@ function showCards() {
   cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
 
+  if (data.length === 0) {
+    const noData = document.createElement("div");
+    noData.className = "no-data";
+
+    noData.textContent = "Nothing matches your search";
+    cardContainer.appendChild(noData);
+
+    return;
+  }
+
   for (let i = 0; i < data.length; i++) {
     let name = data[i].Name.toUpperCase();
     let num = data[i].Num;
@@ -548,7 +558,6 @@ function filterItems() {
   {
     data = data.filter(item => (foundStatus[item.Num] ? "found" : "not-found") === foundFilter)
   }
-
 }
 
 /**
@@ -615,5 +624,4 @@ function showNumber() {
     cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
-
 */
