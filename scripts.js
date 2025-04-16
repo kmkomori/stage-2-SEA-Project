@@ -371,15 +371,15 @@ function selectType() {
     data = csvToArray(BUG_DATA);
     images = FISH_IMAGE_URLS; // NEED TO FIX LATER
   }
-
-  processCards();
 }
 
 /**
  * apply sorting and filtering before displaying
  */
 function processCards() {
+  selectType();
   sortItems();
+  filterItems();
   showCards();
 }
 
@@ -398,6 +398,36 @@ function sortItems() {
   } else if (sortBy === "price-ascending") {
     data.sort((a, b) => b.Price - a.Price);
   }
+}
+
+
+/**
+ * upon selecting filter values, filter data
+ */
+function filterItems() {
+
+  // get all items in the list
+  let filtered = data;
+
+  // filter by price
+  const priceRange = getDropdownValue("priceDropdown");
+
+  if (priceRange !== "all") {
+    filtered = filtered.filter(item => {
+      if (priceRange === "low") return item.Price < 500;
+      if (priceRange === "mid") return item.Price >= 500 && item.Price <= 1000;
+      if (priceRange === "high") return item.Price > 1000;
+    })
+  }
+
+  // filter by color
+  const colorFilter = getDropdownValue("colorDropdown");
+
+  if (colorFilter !== "all") {
+    filtered = filtered.filter(item => item.Color1 === colorFilter);
+  }
+
+  data = filtered;
 }
 
 
