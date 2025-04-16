@@ -544,37 +544,9 @@ function cardChecked(checkbox) {
 }
 
 
-// TEST FUNCTIONALITIES 
+// TEST FUNCTIONALITIES (provided functions and early tests of functionality)
 
-/**
- * implement search bar functionality
- */
 /*
-function search() {
-  var userInput, filter, container, cards, i, title, txtValue;
-
-  userInput = document.getElementById('searchInput'); // from html
-  filter = userInput.value.toUpperCase(); // normalize input
-
-  container = document.getElementById("card-container");
-  cards = container.getElementsByClassName('card');
-
-  // check each card + compare to input
-  for (i = 0; i < cards.length; i++) {
-    
-    // get the title from the card header
-    title = cards[i].querySelector('.card-content h2');
-    titleText = title ? title.textContent || title.innerText : "";
-
-    // see if the card title contains the user input
-    if (titleText.toUpperCase().indexOf(filter) > -1) {
-      cards[i].style.display = "";
-    } else {
-      cards[i].style.display = "none";
-    }
-  }
-}
-
 function quoteAlert() {
   console.log("Button Clicked!");
   alert(
