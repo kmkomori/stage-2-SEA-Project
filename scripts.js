@@ -509,6 +509,7 @@ function sortItems() {
  */
 function filterItems() {
 
+  /*
   // filter by price
   const priceRange = getDropdownValue("priceDropdown");
 
@@ -519,6 +520,7 @@ function filterItems() {
       if (priceRange === "high") return item.Price > 1000;
     })
   }
+  */
 
   // filter by color
   const colorFilter = getDropdownValue("colorDropdown");
@@ -537,9 +539,22 @@ function filterItems() {
 
 }
 
-function cardChecked(checkbox) {
+/**
+ * check found box through checkbox
+ */
+function boxChecked(checkbox) {
   const card = checkbox.closest('.card');
   const num = card.getAttribute('card-num');
+  foundStatus[num] = checkbox.checked;
+}
+
+/**
+ * check found box through card
+ */
+function cardChecked(card) {
+  const checkbox = card.querySelector('.card-checkbox');
+  const num = card.getAttribute('card-num');
+  checkbox.checked = !checkbox.checked;
   foundStatus[num] = checkbox.checked;
 }
 

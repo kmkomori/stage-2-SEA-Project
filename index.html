@@ -32,6 +32,7 @@
           </select>
         </div>
 
+        <!--
         <div class="dropdown">
           <label for="priceDropdown">Filter By Price:</label>
           <select id="priceDropdown" onchange="processCards()">
@@ -41,6 +42,7 @@
             <option value="high">Above 1000 Bells</option>
           </select>
         </div>
+        -->
 
         <div class="dropdown">
           <label for="colorDropdown">Filter By Color:</label>
@@ -74,14 +76,14 @@
     </div>
         
     <div id="card-container"></div>
-    <div class="card" style="display: none">
+    <div class="card" style="display: none" onclick="cardChecked(this); processCards();">
       <div class="card-content">
         <h2>Fish Name</h2>
         <img src="" alt="fish icon" />
         <p class="number">Number: <span id="number"></span></p>
         <p class="price">Sell Price: <span id="price"></span> Bells</p>
         <label>
-          <input type="checkbox" class="card-checkbox" onchange="cardChecked(this); processCards();">
+          <input type="checkbox" class="card-checkbox" onchange="boxChecked(this); processCards();">
           Found?
         </label>        
       </div>
