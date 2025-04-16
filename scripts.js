@@ -170,7 +170,7 @@ const FISH_IMAGE_URLS = [
   "https://dodo.ac/np/images/5/50/Oarfish_NH_Icon.png",
   "https://dodo.ac/np/images/e/e0/Barreleye_NH_Icon.png",
   "https://dodo.ac/np/images/4/45/Coelacanth_NH_Icon.png",
-]; // corresponding image addresses
+]; // image addresses (in number order)
 
 const BUG_DATA = `Num	Name	Price	Where/How	Weather	Total Catches to Unlock	Spawn Rates	NH Jan	NH Feb	NH Mar	NH Apr	NH May	NH Jun	NH Jul	NH Aug	NH Sep	NH Oct	NH Nov	NH Dec	SH Jan	SH Feb	SH Mar	SH Apr	SH May	SH Jun	SH Jul	SH Aug	SH Sep	SH Oct	SH Nov	SH Dec	Color1	Color2	Icon Filename	Critterpedia Filename	Furniture Filename	Internal ID	Unique Entry ID
 10	agrias butterfly	3000	Flying near flowers	Any except rain	20	5	NA	NA	NA	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	NA	NA	NA	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	NA	NA	NA	NA	NA	NA	8 AM – 5 PM	8 AM – 5 PM	8 AM – 5 PM	Pink	Green	Ins6	InsectMiirotateha	FtrInsectMiirotateha	620	aj95rMzdbSbvZy9A2
@@ -254,7 +254,89 @@ const BUG_DATA = `Num	Name	Price	Where/How	Weather	Total Catches to Unlock	Spawn
 71	wharf roach	200	On beach rocks	Any weather	0	20	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	All day	Beige	Blue	Ins71	InsectFunamushi	FtrInsectFunamushi	591	2fp9ChfPuPdYefTK3
 2	yellow butterfly	160	Flying	Any except rain	0	60	NA	NA	4 AM – 7 PM	4 AM – 7 PM	4 AM – 7 PM	4 AM – 7 PM	NA	NA	4 AM – 7 PM	4 AM – 7 PM	NA	NA	NA	NA	4 AM – 7 PM	4 AM – 7 PM	NA	NA	NA	NA	4 AM – 7 PM	4 AM – 7 PM	4 AM – 7 PM	4 AM – 7 PM	Yellow	Blue	Ins1	InsectMonkicho	FtrInsectMonkicho	625	9d92MqgcnGao8wQjB
 `; // data about ACNH bugs
-
+const BUG_IMAGE_URLS = [
+  "",
+  "https://dodo.ac/np/images/f/f8/Common_Butterfly_NH_Icon.png",
+  "https://dodo.ac/np/images/4/43/Yellow_Butterfly_NH_Icon.png",
+  "https://dodo.ac/np/images/b/b6/Tiger_Butterfly_NH_Icon.png",
+  "https://dodo.ac/np/images/7/77/Peacock_Butterfly_NH_Icon.png",
+  "https://dodo.ac/np/images/2/21/Common_Bluebottle_NH_Icon.png",
+  "https://dodo.ac/np/images/9/9e/Paper_Kite_Butterfly_NH_Icon.png",
+  "https://dodo.ac/np/images/8/81/Great_Purple_Emperor_NH_Icon.png",
+  "https://dodo.ac/np/images/3/38/Monarch_Butterfly_NH_Icon.png",
+  "https://dodo.ac/np/images/c/cf/Emperor_Butterfly_NH_Icon.png",
+  "https://dodo.ac/np/images/6/60/Agrias_Butterfly_NH_Icon.png",
+  "https://dodo.ac/np/images/8/81/Rajah_Brooke%27s_Birdwing_NH_Icon.png",
+  "https://dodo.ac/np/images/b/bb/Queen_Alexandra%27s_Birdwing_NH_Icon.png",
+  "https://dodo.ac/np/images/a/a0/Moth_NH_Icon.png",
+  "https://dodo.ac/np/images/7/7f/Atlas_Moth_NH_Icon.png",
+  "https://dodo.ac/np/images/6/69/Madagascan_Sunset_Moth_NH_Icon.png",
+  "https://dodo.ac/np/images/9/9d/Long_Locust_NH_Icon.png",
+  "https://dodo.ac/np/images/d/d0/Migratory_Locust_NH_Icon.png",
+  "https://dodo.ac/np/images/7/78/Rice_Grasshopper_NH_Icon.png",
+  "https://dodo.ac/np/images/3/37/Grasshopper_NH_Icon.png",
+  "https://dodo.ac/np/images/8/8f/Cricket_NH_Icon.png",
+  "https://dodo.ac/np/images/4/4a/Bell_Cricket_NH_Icon.png",
+  "https://dodo.ac/np/images/4/4e/Mantis_NH_Icon.png",
+  "https://dodo.ac/np/images/a/a7/Orchid_Mantis_NH_Icon.png",
+  "https://dodo.ac/np/images/5/51/Honeybee_NH_Icon.png",
+  "https://dodo.ac/np/images/a/a5/Wasp_NH_Icon.png",
+  "https://dodo.ac/np/images/4/44/Brown_Cicada_NH_Icon.png",
+  "https://dodo.ac/np/images/a/a2/Robust_Cicada_NH_Icon.png",
+  "https://dodo.ac/np/images/e/e3/Giant_Cicada_NH_Icon.png",
+  "https://dodo.ac/np/images/f/f8/Walker_Cicada_NH_Icon.png",
+  "https://dodo.ac/np/images/b/ba/Evening_Cicada_NH_Icon.png",
+  "https://dodo.ac/np/images/d/d1/Cicada_Shell_NH_Icon.png",
+  "https://dodo.ac/np/images/0/09/Red_Dragonfly_NH_Icon.png",
+  "https://dodo.ac/np/images/5/5c/Darner_Dragonfly_NH_Icon.png",
+  "https://dodo.ac/np/images/3/35/Banded_Dragonfly_NH_Icon.png",
+  "https://dodo.ac/np/images/c/c8/Damselfly_NH_Icon.png",
+  "https://dodo.ac/np/images/d/d6/Firefly_NH_Icon.png",
+  "https://dodo.ac/np/images/4/4f/Mole_Cricket_NH_Icon.png",
+  "https://dodo.ac/np/images/1/1f/Pondskater_NH_Icon.png",
+  "https://dodo.ac/np/images/7/78/Diving_Beetle_NH_Icon.png",
+  "https://dodo.ac/np/images/8/86/Giant_Water_Bug_NH_Icon.png",
+  "https://dodo.ac/np/images/4/42/Stinkbug_NH_Icon.png",
+  "https://dodo.ac/np/images/a/ac/Man-Faced_Stink_Bug_NH_Icon.png",
+  "https://dodo.ac/np/images/0/08/Ladybug_NH_Icon.png",
+  "https://dodo.ac/np/images/5/58/Tiger_Beetle_NH_Icon.png",
+  "https://dodo.ac/np/images/4/43/Jewel_Beetle_NH_Icon.png",
+  "https://dodo.ac/np/images/8/86/Violin_Beetle_NH_Icon.png",
+  "https://dodo.ac/np/images/9/9a/Citrus_Long-Horned_Beetle_NH_Icon.png",
+  "https://dodo.ac/np/images/7/7c/Rosalia_Batesi_Beetle_NH_Icon.png",
+  "https://dodo.ac/np/images/2/20/Blue_Weevil_Beetle_NH_Icon.png",
+  "https://dodo.ac/np/images/c/c4/Dung_Beetle_NH_Icon.png",
+  "https://dodo.ac/np/images/5/53/Earth-Boring_Dung_Beetle_NH_Icon.png",
+  "https://dodo.ac/np/images/e/ee/Scarab_Beetle_NH_Icon.png",
+  "https://dodo.ac/np/images/4/48/Drone_Beetle_NH_Icon.png",
+  "https://dodo.ac/np/images/3/3e/Goliath_Beetle_NH_Icon.png",
+  "https://dodo.ac/np/images/0/03/Saw_Stag_NH_Icon.png",
+  "https://dodo.ac/np/images/0/0a/Miyama_Stag_NH_Icon.png",
+  "https://dodo.ac/np/images/0/08/Giant_Stag_NH_Icon.png",
+  "https://dodo.ac/np/images/f/f7/Rainbow_Stag_NH_Icon.png",
+  "https://dodo.ac/np/images/a/a0/Cyclommatus_Stag_NH_Icon.png",
+  "https://dodo.ac/np/images/b/ba/Golden_Stag_NH_Icon.png",
+  "https://dodo.ac/np/images/c/c7/Giraffe_Stag_NH_Icon.png",
+  "https://dodo.ac/np/images/1/10/Horned_Dynastid_NH_Icon.png",
+  "https://dodo.ac/np/images/2/2a/Horned_Atlas_NH_Icon.png",
+  "https://dodo.ac/np/images/e/ea/Horned_Elephant_NH_Icon.png",
+  "https://dodo.ac/np/images/2/21/Horned_Hercules_NH_Icon.png",
+  "https://dodo.ac/np/images/5/58/Walking_Stick_NH_Icon.png",
+  "https://dodo.ac/np/images/b/b9/Walking_Leaf_NH_Icon.png",
+  "https://dodo.ac/np/images/1/17/Bagworm_NH_Icon.png",
+  "https://dodo.ac/np/images/5/5d/Ant_NH_Icon.png",
+  "https://dodo.ac/np/images/6/6b/Hermit_Crab_NH_Icon.png",
+  "https://dodo.ac/np/images/1/1f/Wharf_Roach_NH_Icon.png",
+  "https://dodo.ac/np/images/1/15/Fly_NH_Icon.png",
+  "https://dodo.ac/np/images/8/84/Mosquito_NH_Icon.png",
+  "https://dodo.ac/np/images/8/89/Flea_NH_Icon.png",
+  "https://dodo.ac/np/images/e/e9/Snail_NH_Icon.png",
+  "https://dodo.ac/np/images/b/b9/Pill_Bug_NH_Icon.png",
+  "https://dodo.ac/np/images/d/d2/Centipede_NH_Icon.png",
+  "https://dodo.ac/np/images/e/e0/Spider_NH_Icon.png",
+  "https://dodo.ac/np/images/b/b5/Tarantula_NH_Icon.png",
+  "https://dodo.ac/np/images/9/95/Scorpion_NH_Icon.png",
+]; // image addresses (in number order)
 
 // DATA FUNCTIONS (i.e. parsing csv)
 
@@ -379,7 +461,7 @@ function selectType() {
     images = FISH_IMAGE_URLS;
   } else if (type === "bug") {
     data = csvToArray(BUG_DATA);
-    images = FISH_IMAGE_URLS; // NEED TO FIX LATER
+    images = BUG_IMAGE_URLS;
   }
 }
 
