@@ -94,7 +94,12 @@
           <p class="number">Number: <span id="number"></span></p>
           <p class="price">Sell Price: <span id="price"></span> Bells</p>
           <label>
-            <input type="checkbox" class="card-checkbox" onchange="boxChecked(this); processCards();">
+            <input 
+              type="checkbox"
+              class="card-checkbox"
+              onchange="boxChecked(this); processCards();"
+              onclick="event.stopPropagation();"
+            >
             Found?
           </label>        
         </div>
